@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function SearchPhotos() {
+  const [ query, setQuery ] = useState("")
+
+  console.log(query);
+  
   return (
     <>
     <h1>SEARCH TEST</h1>
@@ -11,6 +15,8 @@ export default function SearchPhotos() {
         name="query"
         className="input"
         placeholder="Search Photos"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
       <button type='submit' className="button">
         SEARCH
