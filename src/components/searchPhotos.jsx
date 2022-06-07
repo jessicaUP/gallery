@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { createClient } from 'pexels';
 
+import PhotoTile from "./photoTile";
+
 
 export default function SearchPhotos() {
   const [ typed, setTyped ] = useState('');
@@ -23,6 +25,8 @@ export default function SearchPhotos() {
 
   React.useEffect(() => {
     fetchPhotos();
+    console.log(photos)
+
   }, [ query, pageNum ]);
 
   const searchPhotos = (e) => {
@@ -30,10 +34,7 @@ export default function SearchPhotos() {
     setQuery(typed);
   }
 
-  const photoList = photos.map((photo) =>
-    <div className="tile" key={photo.id}>
-      <img src={photo.src.small} alt={photo.alt} />
-    </div>)
+  const photoList = photos.map((photo) => <PhotoTile key={photo.id} photo={photo} /> )
 
   return (
     <>
