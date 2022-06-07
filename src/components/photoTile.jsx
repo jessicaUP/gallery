@@ -4,20 +4,22 @@ import React, { useState } from "react";
 export default function PhotoTile({ photo }) {
   const [ clicked, setClicked ] = useState(false);
 
- 
+  const clickPhoto = (e) => {
+    e.preventDefault();
+    console.log(e)
+    if (clicked) {
+      e.target.src = photo.src.portrait;
+      setClicked(false);
+    } else {
+      e.target.src = photo.src.original;
+      setClicked(true);
+    }
+  }
 
-  // React.useEffect(() => {
-  //   fetchPhotos();
-  // }, [query, pageNum]);
-
-  // const searchPhotos = (e) => {
-  //   e.preventDefault();
-  //   setQuery(typed);
-  // }
 
   return (
     <>
-      <div className="tile" key={photo.id}>
+      <div className="tile" key={photo.id} onClick={clickPhoto}>
         <div className="img-hover">
           <h3 style={{ color: photo.avg_color }}>{photo.photographer}</h3>
         </div>

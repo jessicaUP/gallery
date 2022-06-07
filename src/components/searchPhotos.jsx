@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createClient } from 'pexels';
 
-import PhotoTile from "./photoTile";
+import PhotoIndex from "./photoIndex";
 
 
 export default function SearchPhotos() {
@@ -34,8 +34,6 @@ export default function SearchPhotos() {
     setQuery(typed);
   }
 
-  const photoList = photos.map((photo) => <PhotoTile key={photo.id} photo={photo} /> )
-
   return (
     <>
     <h1>SEARCH TEST</h1>
@@ -54,9 +52,7 @@ export default function SearchPhotos() {
       </button>
     </form>
 
-    <div className="photos">
-      { photoList }
-    </div>
+    <PhotoIndex photos={photos} /> 
     </>
   );
 }
