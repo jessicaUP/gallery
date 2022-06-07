@@ -1,3 +1,5 @@
+// ----- RESET ----- //
+  
 html 
   box-sizing: border-box 
   font-size: 16px 
@@ -28,3 +30,15 @@ ul
 img 
   max-width: 100% 
   height: auto
+
+// ------------------- //
+
+
+.photos
+  width: 100%
+  display: grid
+  grid-template: repeat(auto-fit, minmax(480px, 1fr)) / repeat(auto-fit, minmax(320px, 1fr)) 
+
+.img 
+  object-fit: cover
+  width: 100%

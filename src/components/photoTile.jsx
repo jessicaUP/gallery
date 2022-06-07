@@ -23,7 +23,7 @@ export default function PhotoTile({ photo }) {
         <div className="img-hover">
           <h3 style={{ color: photo.avg_color }}>{photo.photographer}</h3>
         </div>
-        <img src={photo.src.portrait} alt={photo.alt} style={{ backgroundColor: photo.avg_color }}  />
+        <img className='img' src={photo.src.portrait} alt={photo.alt} style={{ backgroundColor: photo.avg_color }}  />
       </div> 
     </>
   );
