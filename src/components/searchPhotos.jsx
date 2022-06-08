@@ -6,7 +6,7 @@ import PhotoIndex from "./photoIndex";
 
 export default function SearchPhotos() {
   const [ typed, setTyped ] = useState('');
-  const [ query, setQuery ] = useState("cats");
+  const [ query, setQuery ] = useState("clouds");
   const [ photos, setPhotos ] = useState([]);
   const [ pageNum, setPageNum ] = useState(1);
 
@@ -36,9 +36,7 @@ export default function SearchPhotos() {
 
   return (
     <>
-    <h1>SEARCH TEST</h1>
     <form className="form" onSubmit={searchPhotos}>
-      <label htmlFor="query">SEARCH</label>
       <input
         type="text"
         name="query"
@@ -46,11 +44,15 @@ export default function SearchPhotos() {
         placeholder="Search Photos"
         value={typed}
         onChange={(e) => setTyped(e.target.value)}
+        autoFocus
       />
-      <button type='submit' className="button">
-        SEARCH
+      <button type='submit' className="search-btn">
+        Search
       </button>
     </form>
+    <div className="pag" >
+      
+    </div>
 
     <PhotoIndex photos={photos} /> 
     </>

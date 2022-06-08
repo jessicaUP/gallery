@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 className="title">GALLERY</h1>
         <SearchPhotos />
       </div>
     </div>
