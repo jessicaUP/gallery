@@ -1,98 +1,60 @@
-html {
-  box-sizing: border-box;
-  font-size: 16px; }
+/*
+Error: Invalid CSS after "brightness(60%)": expected expression (e.g. 1px, bold), was ";"
+        on line 52 of src/App.sass
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit; }
+47: 
+48: .button
+49:   padding: 10px
+50:   width: 100%
+51:   height: 30%
+52:   background-filter: brightness(60%);
+53:   &:hover
+54:     // h3 
+55:     //   text-shadow: 2px 2px 8px black 
+56: 
+57:   h3
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ol,
-ul {
-  margin: 0;
-  padding: 0;
-  font-weight: normal; }
-
-ol,
-ul {
-  list-style: none; }
-
-img {
-  max-width: 100%;
-  height: auto; }
-
-.form {
-  border: solid 10px black;
-  padding: 10px; }
-  .form .search-btn {
-    border: none;
-    background-color: white; }
-  .form .input {
-    border: none;
-    padding: 5px; }
-
-.button {
-  padding: 10px;
-  width: 100%;
-  height: 30%; }
-  .button:hover h3 {
-    text-shadow: 2px 2px 8px black; }
-  .button h3 {
-    color: white;
-    font-family: sans-serif;
-    cursor: pointer;
-    font-size: 2vw; }
-
-.photos {
-  width: 100%;
-  display: grid;
-  grid-template: repeat(auto-fit, minmax(240px, 1fr))/repeat(auto-fit, minmax(160px, 1fr));
-  background-color: black; }
-  .photos .tile {
-    object-fit: cover;
-    width: 100%;
-    position: relative;
-    display: flex; }
-    .photos .tile .button {
-      display: none;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      animation-name: grow;
-      animation-duration: 1s;
-      animation-fill-mode: forward; }
-      .photos .tile .button h3 {
-        opacity: 0%;
-        animation-name: fade;
-        animation-duration: 1.5s; }
-    .photos .tile:hover .button {
-      display: flex; }
-@keyframes grow {
-  100% {
-    width: 100%; }
-  0% {
-    width: 0%; } }
-      .photos .tile:hover .button h3 {
-        opacity: 100%; }
-@keyframes fade {
-  0% {
-    opacity: 0%; }
-  50% {
-    opacity: 0%; }
-  100% {
-    opacity: 100%; } }
-    .photos .tile .img {
-      object-fit: cover;
-      width: 100%; }
-
-/*# sourceMappingURL=App.css.map */
+Backtrace:
+src/App.sass:52
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/lexer.rb:240:in `expected!'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/parser.rb:897:in `assert_done'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/parser.rb:69:in `parse'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/script/parser.rb:228:in `parse'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/script.rb:27:in `parse'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:1169:in `parse_script'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:745:in `parse_property'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:707:in `parse_property_or_rule'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:666:in `parse_line'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:539:in `build_tree'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:558:in `block in append_children'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:557:in `each'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:557:in `append_children'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:548:in `block in build_tree'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:541:in `each'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:541:in `build_tree'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:558:in `block in append_children'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:557:in `each'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:557:in `append_children'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:417:in `_to_tree'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:320:in `block in watch'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
+/Users/jess/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"brightness(60%)\": expected expression (e.g. 1px, bold), was \";\"\A         on line 52 of src/App.sass\A \A 47: \A 48: .button\A 49:   padding: 10px\A 50:   width: 100%\A 51:   height: 30%\A 52:   background-filter: brightness(60%);\A 53:   &:hover\A 54:     // h3 \A 55:     //   text-shadow: 2px 2px 8px black \A 56: \A 57:   h3"; }

@@ -20,7 +20,6 @@ export default function PhotoTile({ photo }) {
     )
   }
 
-  console.log(photo.photographer_url)
 
   return (
     <>
