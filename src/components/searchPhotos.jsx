@@ -5,14 +5,19 @@ import PhotoIndex from "./photoIndex";
 
 
 export default function SearchPhotos() {
-  const { localStorage } = window;
-  console.log(localStorage.getItem('query'))
+  // CREATE/GET url for persistence
 
+  let url = new URL(window.location.href);
+  let params = new URLSearchParams(window.location.search);
+  
   const info = {
-    query: localStorage.getItem('query') || "clouds",
-    pageNum: localStorage.getItem('pageNum') || 1
+    query: params.get('query') || "clouds",
+    pageNum: params.get('page') || 1
   }
 
+  const client = createClient('563492ad6f91700001000001166f44fea82146a5ad74cdf9f30f0569');
+
+  // CREATE state variables
 
   const [ typed, setTyped ] = useState('');
   const [ query, setQuery ] = useState(info.query);
@@ -21,19 +26,33 @@ export default function SearchPhotos() {
   const [ pageNum, setPageNum ] = useState(info.pageNum);
   // const [ photoNum, setPhotoNum ] = useState(10);
 
-  const client = createClient('563492ad6f91700001000001166f44fea82146a5ad74cdf9f30f0569');
+
 
   async function fetchPhotos() {
     client.photos.search({ query, page: pageNum, per_page: 10 }).then(photos => {
       setPhotos(photos.photos);
+
       let prev = -1;
       let next = -1;
+
       if (photos.prev_page !== undefined) prev = pageNum - 1;
       if (photos.next_page !== undefined) next = pageNum + 1;
       const info = { prev: prev, next: next };
       setPageInfo(info);
+
+      const newParams = new URLSearchParams('');
+      newParams.set('query', query);
+      newParams.set('page', pageNum);
+      // window.history.push(`${window.location.href}${newParams.toString()}`);
+
+      window.history.pushState(null, null, `${window.location.origin}/search?${newParams.toString()}`)
     });
   }
+
+  // HANDLE web back use case
+
+
+
   
 
   // CREATE pagination arrows
@@ -56,11 +75,8 @@ export default function SearchPhotos() {
   // UPDATE photos after change
 
   React.useEffect(() => {
+    debugger
     fetchPhotos();
-    console.log(photos)
-    window.localStorage.setItem('query', query);
-    window.localStorage.setItem('pageNum', pageNum);
-
 
   }, [ query, pageNum ]);
 

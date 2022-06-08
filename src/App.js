@@ -2,9 +2,7 @@ import './App.css';
 import React from 'react';
 
 import SearchPhotos from './components/searchPhotos';
-
-
-
+// import { withRouter } from 'react-router-dom';
 
 function App() {
   return (
@@ -16,4 +14,5 @@ function App() {
   );
 }
 
+// export default withRouter(App);
 export default App;

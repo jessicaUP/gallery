@@ -3,15 +3,6 @@ import React, { useState } from "react";
 
 export default function PhotoTile({ photo }) {
 
-  // const onPhoto = (e) => {
-  //   const img = document.querySelector(`#img-${photo.id}`)
-  //   img.src = photo.src.original;
-  // }
-
-  // const offPhoto = (e) => {
-  //   const img = document.querySelector(`#img-${photo.id}`)
-  //   img.src = photo.src.portrait;
-  // }
 
   const linkArtist = (e) => {
     e.stopPropagation();
@@ -20,6 +11,25 @@ export default function PhotoTile({ photo }) {
     )
   }
 
+  const zoom = (e) => {
+    e.stopPropagation();
+    const zoomImg = document.getElementById(`img-${ photo.id }`);
+    zoomImg.src = photo.src.original
+  }
+
+
+  const modal = (action) => {
+    return () => {
+      const modalDiv = document.getElementById(`modal-${photo.id}`);
+      if (action === 'open') {
+        modalDiv.style.display = 'flex';
+      } else {
+        modalDiv.style.display = 'none';
+      }
+    }
+  };
+
+
 
   return (
     <>
@@ -27,7 +37,10 @@ export default function PhotoTile({ photo }) {
         <div className="button" onClick={linkArtist} style={{ backgroundColor: photo.avg_color }} >
           <h3 >{photo.photographer}</h3>
         </div>
-        <img className='img' id={`img-${photo.id}`} src={photo.src.portrait} alt={photo.alt} style={{ backgroundColor: photo.avg_color }}  />
+        <img className='img' id={`img-${photo.id}`} src={photo.src.portrait} onClick={modal('open')} alt={photo.alt} />
+        <div className="modal" id={`modal-${photo.id}`}  >
+          <img className='open-img' id={`img-${photo.id}`} src={photo.src.medium} onClick={modal('close')} alt={photo.alt} />
+        </div>
       </div> 
     </>
   );
