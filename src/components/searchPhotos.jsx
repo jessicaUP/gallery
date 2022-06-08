@@ -5,11 +5,21 @@ import PhotoIndex from "./photoIndex";
 
 
 export default function SearchPhotos() {
+  const { localStorage } = window;
+  console.log(localStorage.getItem('query'))
+
+  const info = {
+    query: localStorage.getItem('query') || "clouds",
+    pageNum: localStorage.getItem('pageNum') || 1
+  }
+
+
   const [ typed, setTyped ] = useState('');
-  const [ query, setQuery ] = useState("clouds");
+  const [ query, setQuery ] = useState(info.query);
   const [ photos, setPhotos ] = useState([]);
   const [ pageInfo, setPageInfo ] = useState({});
-  const [ pageNum, setPageNum ] = useState(1);
+  const [ pageNum, setPageNum ] = useState(info.pageNum);
+  // const [ photoNum, setPhotoNum ] = useState(10);
 
   const client = createClient('563492ad6f91700001000001166f44fea82146a5ad74cdf9f30f0569');
 
@@ -24,28 +34,37 @@ export default function SearchPhotos() {
       setPageInfo(info);
     });
   }
-  console.log('check', pageInfo)
+  
+
+  // CREATE pagination arrows
 
   let prevArrow = <></>;
   let nextArrow = <></>;
 
   if (!pageInfo.prev || pageInfo.prev < 1) {
-    prevArrow = <div className="arrows" id="left-arrow" ></div>
+    prevArrow = <div className="arrows no-arrow" id="left-arrow" ></div>
   } else if (pageInfo.prev > 0) {
-    prevArrow = <div className="arrows" id="left-arrow" onClick={(e) => setPageNum(pageInfo.prev)} > &lt; &lt; &lt; &lt; &lt; </div>
+    prevArrow = <div className="arrows" id="left-arrow" onClick={(e) => setPageNum(pageInfo.prev)} ><h4 className='fixed' id="prev">&lt;</h4></div>
   }
 
   if (!pageInfo.next || pageInfo.next < 1) {
-    nextArrow = <div className="arrows" id="right-arrow" ></div>
+    nextArrow = <div className="arrows no-arrow" id="right-arrow" ></div>
   } else if (pageInfo.next > 0) {
-    nextArrow = <div className="arrows" id="right-arrow" onClick={(e) => setPageNum(pageInfo.next)} > &gt; &gt; &gt; &gt; &gt; </div>
+    nextArrow = <div className="arrows" id="right-arrow" onClick={(e) => setPageNum(pageInfo.next)} ><h4 className='fixed' id="next">&gt;</h4></div>
   }
+
+  // UPDATE photos after change
 
   React.useEffect(() => {
     fetchPhotos();
     console.log(photos)
+    window.localStorage.setItem('query', query);
+    window.localStorage.setItem('pageNum', pageNum);
+
 
   }, [ query, pageNum ]);
+
+  // UPDATE search
 
   const searchPhotos = (e) => {
     e.preventDefault();
@@ -60,13 +79,13 @@ export default function SearchPhotos() {
         type="text"
         name="query"
         className="input"
-        placeholder="Search Photos"
+        placeholder={query}
         value={typed}
         onChange={(e) => setTyped(e.target.value)}
         autoFocus
       />
       <button type='submit' className="search-btn">
-        Search
+          Search
       </button>
     </form>
 
@@ -75,6 +94,7 @@ export default function SearchPhotos() {
       <PhotoIndex photos={photos} /> 
       {nextArrow}
     </div>
+
     </>
   );
 }
