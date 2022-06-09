@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 export default function PhotoTile({ photo }) {
 
+  // CREATE onClick event to link artist page
 
   const linkArtist = (e) => {
     e.stopPropagation();
@@ -11,12 +12,7 @@ export default function PhotoTile({ photo }) {
     )
   }
 
-  const zoom = (e) => {
-    e.stopPropagation();
-    const zoomImg = document.getElementById(`img-${ photo.id }`);
-    zoomImg.src = photo.src.original
-  }
-
+  // CREATE onClick event for image display
 
   const modal = (action) => {
     return () => {
@@ -28,7 +24,6 @@ export default function PhotoTile({ photo }) {
       }
     }
   };
-
 
 
   return (

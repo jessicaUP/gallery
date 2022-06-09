@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { createClient } from 'pexels';
-import { useNavigate } from 'react-router-dom';
-
 
 import PhotoIndex from "./photoIndex";
 
 
 export default function SearchPhotos() {
+
   // CREATE/GET url for persistence
 
-  let url = new URL(window.location.href);
   let params = new URLSearchParams(window.location.search);
   
   const info = {
@@ -77,7 +75,7 @@ export default function SearchPhotos() {
   }, [ query, pageNum ]);
 
 
-  // UPDATE search
+  // UPDATE state with search onSubmit event
 
   const searchPhotos = (e) => {
     e.preventDefault();
@@ -87,6 +85,9 @@ export default function SearchPhotos() {
 
   return (
     <>
+      <a className="pexel-logo" href="https://www.pexels.com" target="_blank" rel="noopener noreferrer" >
+      <img className="pexel-img" src="https://images.pexels.com/lib/api/pexels.png" alt="pexel-logo-link"/>
+    </a>
     <form className="form" onSubmit={searchPhotos}>
       <input
         type="text"

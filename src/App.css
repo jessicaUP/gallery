@@ -61,7 +61,8 @@ img {
     margin: 20px 60px 40px 10px;
     overflow: visible; }
     .form .input:focus {
-      border: none; }
+      outline: none;
+      border-color: #00958e; }
     .form .input::placeholder {
       font-weight: lighter;
       color: lightgrey; }
@@ -70,6 +71,8 @@ img {
   padding: 10px;
   width: 100%;
   height: 30%; }
+  .button:hover h3 {
+    text-shadow: 2px 2px 8px black; }
   .button h3 {
     color: white;
     font-family: sans-serif;
@@ -159,10 +162,6 @@ img {
     .photos .tile .img {
       object-fit: cover;
       width: 100%; }
-
-.no-img {
-  color: black;
-  font-family: sans-serif; }
 
 .pexel-logo {
   position: absolute;

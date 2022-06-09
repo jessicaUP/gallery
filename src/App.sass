@@ -1,4 +1,4 @@
-// ----- RESET ----- //
+// ------ RESET ------ //
   
 html 
   box-sizing: border-box 
@@ -32,8 +32,12 @@ img
   height: auto
   cursor: nesw-resize
 
-// ------------------- //
+h4
+  cursor: pointer
 
+
+
+// -----SEARCH BAR---- // 
 .form
   display: flex
   justify-content: space-between
@@ -67,7 +71,8 @@ img
     margin: 20px 60px 40px 10px
     overflow: visible
     &:focus
-      border: none
+      outline: none
+      border-color: rgb(0, 149, 142)
     &::placeholder
       font-weight: lighter
       color: lightgrey
@@ -78,14 +83,17 @@ img
   width: 100%
   height: 30%
   &:hover
-    // h3 
-    //   text-shadow: 2px 2px 8px black 
+    h3 
+      text-shadow: 2px 2px 8px black 
 
   h3
     color: white
     font-family: sans-serif
     cursor: pointer
     font-size: 20px
+
+
+// -----PAGINATION----- //  
 
 .gallery
   display: grid
@@ -99,9 +107,12 @@ img
     font-size: 50px
     width: 50px
     height: 100%
+    cursor: pointer
     &:hover
       background-color: black
       color: white
+
+
 
   .no-arrow
     &:hover
@@ -110,6 +121,7 @@ img
   .fixed
     position: fixed
     top: 50%
+    cursor: pointer
 
   #prev
     left: 10px
@@ -118,6 +130,9 @@ img
     right: 10px
 
 
+
+// ----PHOTO INDEX---- //
+  
 .photos
   width: 100%
   display: grid
@@ -162,13 +177,7 @@ img
       
       .open-img
         object-fit: none
-        cursor: alias
-
-
-
-
-
-        
+        cursor: alias   
 
     &:hover
       .button 
@@ -189,17 +198,13 @@ img
             100%
               opacity: 100%
               
-
-
-
     .img 
       object-fit: cover
       width: 100%
 
-.no-img
-  color: black
-  font-family: sans-serif
 
+
+// -----PEXEL------ //
 
 .pexel-logo
   position: absolute
