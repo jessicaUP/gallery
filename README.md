@@ -10,7 +10,7 @@
 * Javascript
 * ReactJS
 * SASS
-* [Pexel API](<https://www.pexels.com/api/documentation/?language=javascript>#)
+* [Pexel API](<https://www.pexels.com/api/documentation/?language=javascript>)
 
 ## Additional Scripts
 
