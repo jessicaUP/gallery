@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { createClient } from 'pexels';
+import { useNavigate } from 'react-router-dom';
+
 
 import PhotoIndex from "./photoIndex";
 
@@ -15,7 +17,6 @@ export default function SearchPhotos() {
     pageNum: params.get('page') || 1
   }
 
-  const client = createClient('563492ad6f91700001000001166f44fea82146a5ad74cdf9f30f0569');
 
   // CREATE state variables
 
@@ -24,9 +25,11 @@ export default function SearchPhotos() {
   const [ photos, setPhotos ] = useState([]);
   const [ pageInfo, setPageInfo ] = useState({});
   const [ pageNum, setPageNum ] = useState(info.pageNum);
-  // const [ photoNum, setPhotoNum ] = useState(10);
 
 
+  // COLLECT images with pexel api
+
+  const client = createClient('563492ad6f917000010000016bcb496808994b9ea6e4e27fa512672a');
 
   async function fetchPhotos() {
     client.photos.search({ query, page: pageNum, per_page: 10 }).then(photos => {
@@ -34,26 +37,21 @@ export default function SearchPhotos() {
 
       let prev = -1;
       let next = -1;
-
-      if (photos.prev_page !== undefined) prev = pageNum - 1;
-      if (photos.next_page !== undefined) next = pageNum + 1;
+  
+      if (photos.prev_page !== undefined) prev = parseInt(pageNum) - 1;
+      if (photos.next_page !== undefined) next = parseInt(pageNum) + 1;
       const info = { prev: prev, next: next };
       setPageInfo(info);
-
-      const newParams = new URLSearchParams('');
-      newParams.set('query', query);
-      newParams.set('page', pageNum);
-      // window.history.push(`${window.location.href}${newParams.toString()}`);
-
-      window.history.pushState(null, null, `${window.location.origin}/search?${newParams.toString()}`)
     });
+
+    // UPDATE url
+    const newParams = new URLSearchParams('');
+    newParams.set('query', query);
+    newParams.set('page', pageNum);
+
+    window.history.pushState(null, null, `${window.location.origin}/search?${newParams.toString()}`);
   }
 
-  // HANDLE web back use case
-
-
-
-  
 
   // CREATE pagination arrows
 
@@ -75,10 +73,9 @@ export default function SearchPhotos() {
   // UPDATE photos after change
 
   React.useEffect(() => {
-    debugger
     fetchPhotos();
-
   }, [ query, pageNum ]);
+
 
   // UPDATE search
 
